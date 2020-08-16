@@ -2,82 +2,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/filter_color_blue"
     android:orientation="vertical"
-    tools:context="com.xxun.camera.com.xxun.CameraActivity">
+    android:splitMotionEvents="false"
+    tools:context="com.xxun.camera.activity.CameraMainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.xxun.widget.FilterCameraView
+        <com.xxun.xunfilter.widget.FilterCameraView
             android:id="@+id/glsurfaceview_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/transparent"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <ImageView
-                android:id="@+id/btn_camera_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_video" />
-
-            <!--<ImageView-->
-                <!--android:id="@+id/btn_camera_switch"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:src="@drawable/selector_rewardcamera" />-->
-        </LinearLayout>
     </RelativeLayout>
 
-    <FrameLayout
+
+    <RelativeLayout
+        android:id="@+id/gallery_filter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120.0dip"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:background="@android:color/white"
-            android:paddingBottom="5dip"
-            android:paddingTop="5dip">
+        <ImageView
+            android:id="@+id/btn_camera_gallery"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/btn_camera_gallery" />
 
-            <ImageView
-                android:id="@+id/btn_camera_beauty"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:scaleType="center"
-                android:src="@drawable/btn_camera_beauty"></ImageView>
+        <TextView
+            android:id="@+id/show_filter_name"
+            android:layout_width="106px"
+            android:layout_height="56px"
+            android:layout_marginLeft="107px"
+            android:layout_marginTop="11px"
+            android:background="@drawable/bg_text"
+            android:paddingLeft="10px"
+            android:paddingTop="2px"
+            android:text="@string/filter_none"
+            android:textColor="@color/white"
+            android:textSize="40px" />
 
-            <ImageView
-                android:id="@+id/btn_camera_shutter"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:src="@drawable/btn_camera_shutter"></ImageView>
-
-            <ImageView
-                android:id="@+id/btn_camera_filter"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:scaleType="center"
-                android:src="@drawable/btn_camera_filter"></ImageView>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/btn_camera_filter"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/btn_camera_filter" />
+    </RelativeLayout>
 
 
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/btn_camera_shutter"
+        android:layout_width="148px"
+        android:layout_height="75px"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="3px"
+        android:layout_marginLeft="12px"
+        android:scaleType="centerCrop"
+        android:src="@drawable/btn_camera_shutter" />
+
+
+    <Button
+        android:id="@+id/btn_camera_video"
+        android:layout_width="148px"
+        android:layout_height="75px"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="3px"
+        android:layout_marginLeft="160px"
+        android:background="@drawable/btn_pic_video"
+        android:scaleType="centerCrop" />
+
+
+    <RelativeLayout
+        android:id="@+id/layout_video_mode"
+        android:layout_width="match_parent"
+        android:layout_height="75px"
+        android:layout_gravity="bottom"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_flick"
+            android:layout_width="14px"
+            android:layout_height="14px"
+            android:layout_marginLeft="32px"
+            android:layout_marginTop="30px"
+            android:background="@drawable/btn_flick" />
+
+        <Chronometer
+            android:id="@+id/chmeter_time"
+            android:layout_width="wrap_content"
+            android:layout_height="75px"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="3px"
+            android:layout_marginLeft="12px"
+            android:background="@drawable/bg_chronome"
+            android:paddingLeft="58px"
+            android:textColor="@color/white"
+            android:textSize="70sp" />
+
+
+        <Button
+            android:id="@+id/btn_camera_video_stop"
+            android:layout_width="98px"
+            android:layout_height="75px"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="3px"
+            android:layout_marginLeft="210px"
+
+            android:background="@drawable/btn_pic_video_stop"
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
+
 
     <include
         android:id="@+id/layout_filter"
