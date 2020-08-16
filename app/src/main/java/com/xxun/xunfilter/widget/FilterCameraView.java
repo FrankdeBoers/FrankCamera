@@ -208,10 +208,12 @@ public class FilterCameraView extends FilterBaseView {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
                 com.xxun.xunfilter.camera.CameraEngine.stopPreview();
-                final Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                final byte[] dataFinal = data;
                 queueEvent(new Runnable() {
                     @Override
                     public void run() {
+                        byte[] roteData = rotateAndMirror(dataFinal, 90, false);
+                        final Bitmap bitmap = BitmapFactory.decodeByteArray(roteData, 0, roteData.length);
                         final Bitmap photo = drawPhoto(bitmap, com.xxun.xunfilter.camera.CameraEngine.getCameraInfo().isFront);
                         GLES20.glViewport(0, 0, surfaceWidth, surfaceHeight);
                         if (photo != null) {

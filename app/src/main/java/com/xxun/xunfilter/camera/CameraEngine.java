@@ -87,7 +87,7 @@ public class CameraEngine {
         parameters.setPreviewSize(PREVIEW_SIZE_WIDTH, PREVIEW_SIZE_HEIGHT);
 //        Size pictureSize = CameraUtils.getLargePictureSize(camera);
         parameters.setPictureSize(PREVIEW_SIZE_WIDTH, PREVIEW_SIZE_HEIGHT);
-        parameters.setRotation(180);
+        parameters.setRotation(0);
         List<Camera.Size> supportedPreviewSize = parameters.getSupportedPreviewSizes();
         for (Camera.Size size : supportedPreviewSize) {
             Log.d(TAG, "supportedPreviewSize: " + size.width + "x" +  size.height);

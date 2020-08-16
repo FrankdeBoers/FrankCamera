@@ -67,8 +67,8 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
     // 视频保存路径
     private static final String VIDEO_FILE_PATH
             = Environment.getExternalStoragePublicDirectory("DCIM").getAbsolutePath() + "/Camera";
-    public static final int PREVIEW_SIZE_WIDTH = 480;
-    public static final int PREVIEW_SIZE_HEIGHT = 640;
+    public static final int PREVIEW_SIZE_WIDTH = 1440;
+    public static final int PREVIEW_SIZE_HEIGHT = 1080;
     private static final int MSG_DISABLE_BTNPIC = 1;
     private static final int MSG_ENABLE_BTNPIC = 2;
     private static final int MSG_HIDE_TOP = 3;
