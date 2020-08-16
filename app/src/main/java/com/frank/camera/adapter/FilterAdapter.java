@@ -1,4 +1,4 @@
-package com.xxun.camera.adapter;
+package com.frank.camera.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.frank.filtercamera.R;
-import com.xxun.camera.helper.FilterTypeHelper;
-import com.xxun.xunfilter.filter.helper.FilterType;
+import com.frank.camera.helper.FilterTypeHelper;
+import com.frank.filters.filter.helper.FilterType;
 
 /**
  * Created by Frank on 2016/3/17.

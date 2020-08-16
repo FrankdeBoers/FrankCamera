@@ -1,4 +1,4 @@
-package com.xxun.camera.activity;
+package com.frank.camera.activity;
 
 import android.app.Activity;
 import android.content.Intent;

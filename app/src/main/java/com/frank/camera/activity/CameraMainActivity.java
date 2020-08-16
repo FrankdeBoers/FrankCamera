@@ -1,4 +1,4 @@
-package com.xxun.camera.activity;
+package com.frank.camera.activity;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -40,12 +40,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.frank.filtercamera.R;
-import com.xxun.camera.adapter.FilterAdapter;
-import com.xxun.camera.helper.FilterTypeHelper;
-import com.xxun.xunfilter.XunFilterEngine;
-import com.xxun.xunfilter.camera.CameraEngine;
-import com.xxun.xunfilter.filter.helper.FilterType;
-import com.xxun.xunfilter.widget.FilterCameraView;
+import com.frank.camera.adapter.FilterAdapter;
+import com.frank.camera.helper.FilterTypeHelper;
+import com.frank.filters.FrankFilterEngine;
+import com.frank.filters.camera.CameraEngine;
+import com.frank.filters.filter.helper.FilterType;
+import com.frank.filters.widget.FilterCameraView;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -102,7 +102,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
     private LinearLayout mFilterLayout;
     private RecyclerView mFilterListView;
     private FilterAdapter mAdapter;
-    private XunFilterEngine xunFilterEngine;
+    private FrankFilterEngine frankFilterEngine;
     private ImageView btn_shutter;
     private ImageView btnPic = null;
     private Button btnVideo = null;
@@ -126,7 +126,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
 
         @Override
         public void onFilterChanged(FilterType filterType) {
-            xunFilterEngine.setFilter(filterType);
+            frankFilterEngine.setFilter(filterType);
             hideFilters();
             Log.d(TAG, "filterType: " + filterType);
             tv_filter_name.setText(FilterTypeHelper.FilterType2Name(filterType));
@@ -249,9 +249,9 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         Log.d(TAG, "onCreate 1");
-        XunFilterEngine.Builder builder = new XunFilterEngine.Builder();
+        FrankFilterEngine.Builder builder = new FrankFilterEngine.Builder();
         Log.d(TAG, "onCreate 2");
-        xunFilterEngine = builder
+        frankFilterEngine = builder
                 .build((FilterCameraView) findViewById(R.id.glsurfaceview_camera));
         initView();
         Log.d(TAG, "onCreate 3");
@@ -274,8 +274,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
         // setScreenOffTime(8000);
         setIsCameraUsing("false");
         releaseWakeLock();
-        Intent intent = new Intent("com.xxun.xuncamera.quitrecord");
-        sendBroadcast(intent);
+
         if (state == STATE_RECORDERING) {
             stopRecordVideo();
             saveRecordVideo();
@@ -295,8 +294,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
         Log.d(TAG, "onStop ..");
         // 退出时，Camera标志位 false
         setIsCameraUsing("false");
-//        Intent intent = new Intent("com.xxun.xuncamera.quitrecord");
-//        sendBroadcast(intent);
+
     }
 
     // 设置系统灭屏时间
@@ -388,11 +386,6 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
                 return false;
             }
         });
-
-        // 发送终止播放故事的广播
-        Intent intent = new Intent("com.xiaoxun.xxun.story.finish");
-        sendBroadcast(intent);
-
         initAudioFocus();
     }
 
@@ -448,7 +441,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
     private void takePhoto() {
         Log.d(TAG, "takePhoto ");
         mPrePicTime = System.currentTimeMillis();
-        xunFilterEngine.savePicture(getOutputMediaFile(), null);
+        frankFilterEngine.savePicture(getOutputMediaFile(), null);
     }
 
     private void takeVideo() {
@@ -458,7 +451,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
             mCurrentStartRecordTime = System.currentTimeMillis();
             camera = CameraEngine.getCamera();
             camera.setDisplayOrientation(180);
-            xunFilterEngine.setFilter(FilterType.NONE);
+            frankFilterEngine.setFilter(FilterType.NONE);
             tv_filter_name.setText(FilterTypeHelper.FilterType2Name(FilterType.NONE));
             mAdapter.setFilters4Activity();
             startRecord(camera);
@@ -794,12 +787,7 @@ public class CameraMainActivity extends Activity implements View.OnClickListener
      * 进入相册
      */
     private void goGallery() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        String packageName = "com.xxun.xungallery";
-        String className = "com.xxun.xungallery.MainPhotoActivity";
-        ComponentName componentName = new ComponentName(packageName, className);
-        intent.setComponent(componentName);
-        startActivity(intent);
+
     }
 
     /**

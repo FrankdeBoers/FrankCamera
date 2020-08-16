@@ -1,7 +1,7 @@
-package com.xxun.camera.helper;
+package com.frank.camera.helper;
 
 import com.frank.filtercamera.R;
-import com.xxun.xunfilter.filter.helper.FilterType;
+import com.frank.filters.filter.helper.FilterType;
 
 
 public class FilterTypeHelper {

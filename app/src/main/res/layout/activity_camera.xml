@@ -5,13 +5,13 @@
     android:background="@color/filter_color_blue"
     android:orientation="vertical"
     android:splitMotionEvents="false"
-    tools:context="com.xxun.camera.activity.CameraMainActivity">
+    tools:context="com.frank.camera.activity.CameraMainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.xxun.xunfilter.widget.FilterCameraView
+        <com.frank.filters.widget.FilterCameraView
             android:id="@+id/glsurfaceview_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
